@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Feedback - Student Feedback Portal{% endblock %}
+
+{% block content %}
+<div class="feedback-container">
+    <div class="feedback-form">
+        <h2>Submit Your Feedback</h2>
+        <form method="POST" action="{{ url_for('feedback_form') }}" id="feedbackForm">
+            <div class="form-group">
+                <label for="feedback_text">Your Feedback:</label>
+                <textarea id="feedback_text" name="feedback_text" rows="5" required 
+                          placeholder="Please share your thoughts and suggestions..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="rating">Rating (1-5):</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="1">1 - Poor</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Very Good</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-primary" id="submitFeedback">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

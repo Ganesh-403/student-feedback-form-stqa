@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Student Feedback Portal{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h2>Admin Dashboard - All Feedback</h2>
+    
+    {% if feedback_list %}
+        <div class="feedback-stats">
+            <p><strong>Total Feedback Entries:</strong> {{ feedback_list|length }}</p>
+        </div>
+        
+        <div class="feedback-table">
+            <table id="feedbackTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student</th>
+                        <th>Feedback</th>
+                        <th>Rating</th>
+                        <th>Date Submitted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for feedback in feedback_list %}
+                    <tr>
+                        <td>{{ feedback[0] }}</td>
+                        <td>{{ feedback[1] }}</td>
+                        <td class="feedback-text">{{ feedback[2] }}</td>
+                        <td class="rating">{{ feedback[3] }}/5</td>
+                        <td>{{ feedback[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="no-feedback">
+            <p>No feedback submissions yet.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
